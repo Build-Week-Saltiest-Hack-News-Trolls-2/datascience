@@ -51,27 +51,22 @@ print("CONNECTION:", connection)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-# convert df to list of tuples
-tuples = list(df.itertuples(index=False,name=None))
+# ---
+# cursor = connection.cursor()
+# print("CURSOR:", cursor)
 
-# create cursor connection
-cursor = connection.cursor()
-print("CURSOR:", cursor)
+# #insertion_query = 'INSERT INTO titan_table (survived,pclass,name,sex,age,siblings_or_spouse,parents_or_children,fare) VALUES %s'
+# #execute_values(cursor,insertion_query,tuples)
 
-#execute queries
-cursor.execute("CREATE TABLE IF NOT EXISTS Comment (id serial PRIMARY KEY, user VARCHAR(10), text VARCHAR(30));")   # rating INTEGER
-result = cursor.fetchall()
+# connection.commit()
+# ---
 
-insertion_query = "INSERT INTO  Comment (id, user, text) VALUES %s"     # rating
-execute_values(cursor,insertion_query,tuples)
-
-connection.commit()
 
 # create Comment class
-# class Comment(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     user = db.Column(db.String(25))
-#     text = db.Column(db.String(25))
+class Comment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user = db.Column(db.String(25))
+    text = db.Column(db.String(25))
     #rating = db.Column(db.String(25))
 
 
