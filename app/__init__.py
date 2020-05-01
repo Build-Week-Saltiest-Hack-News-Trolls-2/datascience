@@ -11,7 +11,7 @@ def create_app():
 
     # load_dotenv()
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = "postgres://bmszptoo:I5aJwqm9vFBWYp0rpS2tS1FyV5IEcId6@drona.db.elephantsql.com:5432/bmszptoo"
+    app.config['SQLALCHEMY_DATABASE_URI'] = "URL"
 
     # db = SQLAlchemy(app)
     # migrate = Migrate(app, db)
